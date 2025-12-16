@@ -1,0 +1,300 @@
+<index html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy 1st Anniversary Nakshatra</title>
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Nunito:wght@400;700;900&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            /* Cute & Happy Color Palette */
+            --primary: #ff6b81;       /* Watermelon Pink */
+            --secondary: #ffb6c1;     /* Baby Pink */
+            --accent: #ff9f43;        /* Soft Orange for warmth */
+            --bg-pink: #fff5f7;       /* Pale Background */
+            --paper-color: #fff;      
+            --text-color: #5a5a5a;    
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg-pink);
+            font-family: 'Nunito', sans-serif;
+            color: var(--text-color);
+            overflow-x: hidden;
+            /* Cute subtle polka dot pattern */
+            background-image: radial-gradient(var(--secondary) 1px, transparent 1px);
+            background-size: 30px 30px;
+        }
+
+        /* --- BACKGROUND HEARTS --- */
+        .hearts-bg {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            z-index: -1;
+            pointer-events: none;
+        }
+        
+        .floating-heart {
+            position: absolute;
+            bottom: -10vh;
+            color: var(--primary);
+            opacity: 0.6;
+            font-size: 1.5rem;
+            animation: floatUp 15s linear infinite;
+        }
+
+        @keyframes floatUp {
+            0% { transform: translateY(0) rotate(0deg) scale(0.8); opacity: 0.8; }
+            50% { opacity: 1; }
+            100% { transform: translateY(-110vh) rotate(360deg) scale(1.2); opacity: 0; }
+        }
+
+        /* --- ENTRANCE SCREEN (The "Happy" Part) --- */
+        #welcome-screen {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            /* Happy Sunset Gradient */
+            background: linear-gradient(135deg, #ffc3a0 0%, #ffafbd 100%);
+            color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            transition: transform 1.2s ease-in-out;
+        }
+
+        @keyframes bobbing {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+            100% { transform: translateY(0); }
+        }
+
+        #welcome-screen h1 {
+            font-family: 'Great Vibes', cursive;
+            font-size: 4rem;
+            margin-bottom: 30px;
+            text-align: center;
+            padding: 0 20px;
+            color: white;
+            text-shadow: 0px 0px 20px rgba(255, 255, 255, 0.6);
+            animation: bobbing 2.5s ease-in-out infinite;
+        }
+
+        .start-btn {
+            background: white;
+            color: var(--primary);
+            border: none;
+            padding: 20px 60px;
+            font-size: 1.4rem;
+            border-radius: 60px;
+            cursor: pointer;
+            font-family: 'Nunito', sans-serif;
+            font-weight: 900;
+            box-shadow: 0 10px 30px -5px rgba(255, 107, 129, 0.5);
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            animation: pulseBtn 2s infinite;
+        }
+
+        @keyframes pulseBtn {
+             0% { box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.7); }
+             70% { box-shadow: 0 0 0 20px rgba(255, 255, 255, 0); }
+             100% { box-shadow: 0 0 0 0 rgba(255, 255, 255, 0); }
+        }
+
+        .start-btn:hover {
+            transform: translateY(-5px) scale(1.05);
+            background: #fff0f3;
+            color: #ff4757;
+        }
+
+        /* --- MAIN CONTENT --- */
+        .main-container {
+            max-width: 700px;
+            margin: 0 auto;
+            padding: 20px;
+            display: none;
+            opacity: 0;
+            transition: opacity 2s ease;
+            transform: translateY(20px);
+        }
+
+        header {
+            text-align: center;
+            margin-top: 50px;
+            margin-bottom: 40px;
+        }
+
+        h1.title {
+            font-family: 'Great Vibes', cursive;
+            font-size: 4rem;
+            color: var(--primary);
+            margin: 0;
+            text-shadow: 3px 3px 0px white, 5px 5px 0px var(--secondary);
+        }
+
+        /* --- LETTER PAPER STYLING --- */
+        .paper {
+            background-color: var(--paper-color);
+            padding: 50px;
+            border-radius: 30px;
+            border: 4px dashed var(--secondary);
+            box-shadow: 0 20px 40px rgba(255, 182, 193, 0.3);
+            position: relative;
+            line-height: 1.9;
+            font-size: 1.15rem;
+            margin-bottom: 50px;
+            /* Subtle texture on paper */
+            background-image: radial-gradient(#f0f0f0 1.5px, transparent 1.5px);
+            background-size: 20px 20px;
+        }
+
+        /* REMOVED THE .paper::before block that contained the heart/oval */
+
+
+        .greeting {
+            font-weight: 800;
+            font-size: 1.5rem;
+            color: var(--primary);
+            margin-bottom: 25px;
+            display: block;
+            text-align: center;
+        }
+
+        /* Bold text for Emphasis */
+        .highlight {
+            color: var(--primary);
+            font-weight: 800;
+        }
+
+        .signature {
+            font-family: 'Great Vibes', cursive;
+            font-size: 3rem;
+            text-align: right;
+            margin-top: 50px;
+            color: var(--primary);
+            transform: rotate(-2deg);
+        }
+        
+        /* Mobile adjustment */
+        @media (max-width: 600px) {
+            .paper { padding: 35px 25px; border-width: 3px; }
+            h1.title { font-size: 3rem; }
+            #welcome-screen h1 { font-size: 3rem; }
+            .start-btn { padding: 15px 40px; font-size: 1.2rem;}
+        }
+
+    </style>
+</head>
+<body>
+
+    <audio id="music" loop>
+        <source src="song.mp3" type="audio/mpeg">
+    </audio>
+
+    <div class="hearts-bg" id="hearts-container"></div>
+
+    <div id="welcome-screen">
+        <h1>✨ For My Nakshatra ✨</h1>
+        <p style="font-weight: bold; opacity: 0.9; margin-bottom: 30px;">A special surprise is waiting...</p>
+        <button class="start-btn" onclick="startExperience()">🌸 Tap to Open Our World 🌸</button>
+    </div>
+
+    <div class="main-container" id="content">
+        
+        <header>
+            <h1 class="title">Happy 1st Anniversary</h1>
+            <p style="font-weight: bold; color: var(--secondary); letter-spacing: 2px;">❤ 365 DAYS OF LOVE ❤</p>
+        </header>
+
+        <div class="paper">
+            <span class="greeting">To My Forever, My Nakshatra,</span>
+
+            <p>Happy 1st Anniversary, my love. ❤️</p>
+            
+            <p>It is <span class="highlight">December 17th</span>. One whole year.</p>
+
+            <p>I have been sitting here thinking about how this all began, and it brings such a smile to my face. Isn’t it crazy? The most beautiful love story of my life didn’t start with flowers; it started with a fight—one that <em>you</em> initiated! I remember those days of not talking, the silence between us, and how heavy it felt. But looking back, I think that fight was necessary. It was the storm before the calm, the moment that pushed us to apologize and finally realize what we were to each other.</p>
+
+            <p>When we officially came into this relationship on December 17th, my life took a turn I never expected. And then came <span class="highlight">December 27th</span>—seeing you for the first time in years. My heart was racing so fast I thought you could hear it.</p>
+
+            <p>But nothing, absolutely nothing, compares to <span class="highlight">January 6th</span>. Do you remember? That moment is burned into my soul. Our first kiss. Not just a peck, but three times straight… it was so hot, so passionate, and so perfect. In that moment, holding you, I knew I was in trouble because I was never going to be able to let you go.</p>
+
+            <p>We didn’t have it easy after that. Life got in the way—tests, exams, the stress of the future. We barely had time to talk properly. And then came the hardest transition: me leaving for college and you staying back for your drop year.</p>
+
+            <p>I know you were mad at me in the beginning. I know the distance hurt, and I know I wasn’t perfect. But Nakshatra, I am so proud of us. Long distance is terrifying for so many people, but look at us. It’s not "easy," but it’s not hard either—because we are loyal. Because we trust each other. We learned that love isn't just about being in the same room; it's about trying to make each other happy, no matter how many miles are between us.</p>
+
+            <p>And even with the distance, we stole so many beautiful moments. I cherish the memory of your birthday party, seeing you shine. I loved coming to your home to give you your gift, and walking to the temple with you—asking God to keep us together. And <span class="highlight">Diwali</span>… celebrating with you and your family, clicking all those pictures, laughing and feeling like I truly belonged there. Those memories are what keep me going when I miss you.</p>
+
+            <p>You know, we have known each other since we were "smol" kids. Maybe something was always happening in the background of our lives, pushing us toward this point. But this year, you truly changed me. You are the only one who taught me what love really means. You brought happiness into a life that desperately needed it.</p>
+
+            <p>So, on our one-year anniversary, I want to promise you something.<br>
+            I want to keep you happy for the rest of my life.<br>
+            I want to keep you safe, always.<br>
+            I want you to be only with me, because you are <em>mine</em>. You are always mine, and you will always be mine.</p>
+
+            <p>Thank you for sticking with me through the fights, the distance, and the growth. I love you more than words can say.</p>
+
+            <p style="text-align: center; font-weight: bold; margin-top: 30px;">Happy 1 Year, my Little Kitty.</p>
+
+            <div class="signature">
+                Yours forever,<br>
+                Kishu<br>
+                ❤️❤️❤️
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        function startExperience() {
+            // Slide the welcome screen UP
+            const welcome = document.getElementById('welcome-screen');
+            welcome.style.transform = 'translateY(-100vh)';
+            
+            // Hide it completely after animation
+            setTimeout(() => {
+                welcome.style.display = 'none';
+            }, 1200);
+
+            // Show Content
+            const content = document.getElementById('content');
+            content.style.display = 'block';
+            
+            // Trigger reflow/animation
+            content.getBoundingClientRect();
+            content.style.opacity = '1';
+            content.style.transform = 'translateY(0)';
+
+            // Play Music
+            const music = document.getElementById('music');
+            music.play().catch(e => console.log("Audio play failed (browser blocked)"));
+        }
+
+        function createHearts() {
+            const container = document.getElementById('hearts-container');
+            const heartCount = 35; 
+            for (let i = 0; i < heartCount; i++) {
+                const heart = document.createElement('div');
+                heart.classList.add('floating-heart');
+                heart.innerHTML = '❤';
+                
+                // Randomize position
+                heart.style.left = Math.random() * 100 + 'vw';
+                heart.style.animationDuration = (Math.random() * 10 + 15) + 's'; 
+                heart.style.fontSize = (Math.random() * 1.5 + 0.8) + 'rem';
+                
+                // Varied colors
+                if (i % 3 === 0) heart.style.color = "#ffc3a0"; /* Peach */
+                else if (i % 2 === 0) heart.style.color = "var(--secondary)"; /* Pink */
+                
+                container.appendChild(heart);
+            }
+        }
+        createHearts();
+    </script>
+</body>
+</html>
